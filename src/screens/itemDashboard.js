@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import {Container, Card} from 'semantic-ui-react';
+import CreateItemModal from './createItem';
 
 class ItemDashboard extends Component {
   render() {
     return (
       <div>
+        <CreateItemModal />
         <Container style={{padding: 10}}>
           <Card.Group>
               <Card>

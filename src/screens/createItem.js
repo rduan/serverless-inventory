@@ -32,7 +32,8 @@ class CreateItemModal extends Component {
     console.log('====', newItem);
     API.post(apiName, path, newItem)
       .then(response => {
-        console.log(response);
+        console.log('success post', response);
+        this.props.getItems()
       })
       .catch(error => {
         console.log(error.response);

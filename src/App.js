@@ -14,11 +14,11 @@ let path = '/inventory';
 
 class App extends Component {
   componentDidMount() {
-    API.get(apiName, path).then((response) => {
-      console.log('--------',response)
-    }).catch(err => {
-      console.log('==== error', err);
-    });
+    // API.get(apiName, path).then((response) => {
+    //   console.log('--------',response)
+    // }).catch(err => {
+    //   console.log('==== error', err);
+    // });
   }
 
   render() {

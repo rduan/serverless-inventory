@@ -10,7 +10,7 @@ import ItemDashboard from './screens/itemDashboard';
 Amplify.configure(aws_exports);
 
 let apiName = 'inventoryCRUD';
-let path = '/';
+let path = '/inventory';
 
 class App extends Component {
   componentDidMount() {

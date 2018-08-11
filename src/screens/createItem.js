@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { Form, Modal, Button, Container } from 'semantic-ui-react';
 import Amplify, { API } from 'aws-amplify';
+const uuidv1 = require('uuid/v1');
 
 class CreateItemModal extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      ItemName: '',
+      ItemPrice: '',
+      ItemDescription: ''
+    };
     // this.h
   }
 
@@ -14,20 +19,24 @@ class CreateItemModal extends Component {
   };
 
   handleSubmit = event => {
-    let apiName = 'sampleCloudApi';
-    let path = '/items';
+    let apiName = 'inventoryCRUD';
+    let path = '/inventory';
     let newItem = {
       body: {
-        name: this.state.itemName,
-        price: this.state.itemPrice,
-        description: this.state.itemDescription
+        ID: uuidv1(),
+        ItemName: this.state.itemName,
+        ItemPrice: this.state.itemPrice,
+        ItemDescription: this.state.itemDescription
       }
-    }
-    API.post(apiName, path, newItem).then((response) => {
-      console.log(response);
-    }).catch((error) => {
-      console.log(error.response);
-    });
+    };
+    console.log('====', newItem);
+    API.post(apiName, path, newItem)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
     event.preventDefault();
     this.handleClose();
   };
@@ -65,7 +74,7 @@ class CreateItemModal extends Component {
               />
             </Form.Group>
             <Form.TextArea
-              name="item_description"
+              name="itemDescription"
               label="Item Description"
               placeholder="Add a Description of the Item..."
               onChange={this.handleChange}

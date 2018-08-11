@@ -2,6 +2,38 @@
 features:
   cloudlogic: !com.amazonaws.mobilehub.v0.CloudLogic 
     components:
+      inventoryCRUD: !com.amazonaws.mobilehub.v0.API 
+        attributes:
+          name: inventoryCRUD
+          requires-signin: false
+          sdk-generation-stage-name: Development
+        paths:
+          /inventory: !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/inventory-20180811094310.zip
+            description: 'Handler for calls to resource path : /inventory/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: 49wozg4qHSDmC4OP7r3TC/3Yqg+PhGtrXmpX/X2NG7Y=
+            memorySize: '128'
+            modified: '2018-08-10T23:46:05.988+0000'
+            name: inventory
+            runtime: nodejs8.10
+            timeout: '3'
+            version: f6WGTZpGfWak3qO7rDiSzDxlVPBMLsnG
+          '/inventory/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/inventory-20180811094310.zip
+            description: 'Handler for calls to resource path : /inventory/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: 49wozg4qHSDmC4OP7r3TC/3Yqg+PhGtrXmpX/X2NG7Y=
+            memorySize: '128'
+            modified: '2018-08-10T23:46:05.988+0000'
+            name: inventory
+            runtime: nodejs8.10
+            timeout: '3'
+            version: Ybez3SxeILY987dD2_k2RQ5sxpHF4NKN
       sampleCloudApi: !com.amazonaws.mobilehub.v0.API 
         attributes:
           name: sampleCloudApi
@@ -9,54 +41,46 @@ features:
           sdk-generation-stage-name: Development
         paths:
           /items: !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/sampleLambda-20180810212932.zip
+            codeFilename: uploads/sampleLambda-20180810234320.zip
             description: 'Handler for calls to resource path : /items/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: s6HCbvzusUy3Kn3ToHP1GF/X6yc9bPym4kQwSVb1OCs=
+            hashcode: 9TLJhsjtr0bd87A21rEuxvmuwSILM6RXw5+O2rANaNk=
             memorySize: '128'
-            modified: '2018-08-10T11:32:25.278+0000'
+            modified: '2018-08-10T13:49:48.963+0000'
             name: sampleLambda
             runtime: nodejs6.10
             timeout: '3'
-            version: Jo5qW6K8rMBm8LAj9LkfrT45b4Eyl.Eq
+            version: JunmgC5YayK4dJLYD4Vy9wHLhobVwo17
           '/items/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/sampleLambda-20180810212932.zip
+            codeFilename: uploads/sampleLambda-20180810234320.zip
             description: 'Handler for calls to resource path : /items/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: s6HCbvzusUy3Kn3ToHP1GF/X6yc9bPym4kQwSVb1OCs=
+            hashcode: 9TLJhsjtr0bd87A21rEuxvmuwSILM6RXw5+O2rANaNk=
             memorySize: '128'
-            modified: '2018-08-10T11:32:25.278+0000'
+            modified: '2018-08-10T13:49:48.963+0000'
             name: sampleLambda
             runtime: nodejs6.10
             timeout: '3'
-            version: 6GQ.mZp8lUeTZjsDv0IUroxgyXLGD.cv
+            version: AJk41_HfJQ1DCpoz8BX3uzEyczlyRnmx
   database: !com.amazonaws.mobilehub.v0.Database 
     components:
       database-nosql: !com.amazonaws.mobilehub.v0.NoSQLDatabase 
         tables:
           - !com.amazonaws.mobilehub.v0.NoSQLTable 
             attributes:
-              email: S
-              personId: S
-              personName: S
-              phone: S
-              teamId: S
-            hashKeyName: teamId
+              ID: S
+              ItemDescription: S
+              ItemName: S
+              ItemPrice: N
+            hashKeyName: ID
             hashKeyType: S
-            indexes:
-              - !com.amazonaws.mobilehub.v0.NoSQLIndex 
-                hashKeyName: teamId
-                hashKeyType: S
-                indexName: personName-index
-                rangeKeyName: personName
-                rangeKeyType: S
-            rangeKeyName: personId
-            rangeKeyType: S
-            tableName: ___DYNAMIC_PREFIX___-AWSMobileTable
+            rangeKeyName: ''
+            rangeKeyType: ''
+            tableName: ___DYNAMIC_PREFIX___-inventory
             tablePrivacy: public
   sign-in: !com.amazonaws.mobilehub.v0.SignIn {}
 name: serverless-inventory

@@ -9,13 +9,15 @@ import ItemDashboard from './screens/itemDashboard';
 
 Amplify.configure(aws_exports);
 
-let apiName = 'sampleCloudApi';
-let path = '/items';
+let apiName = 'inventoryCRUD';
+let path = '/';
 
 class App extends Component {
   componentDidMount() {
     API.get(apiName, path).then((response) => {
-      console.log(response)
+      console.log('--------',response)
+    }).catch(err => {
+      console.log('==== error', err);
     });
   }
 
